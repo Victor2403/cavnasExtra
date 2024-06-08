@@ -1,9 +1,15 @@
 public class Function {
 
-
+    // this temp and kind of map for other function
 
     // ASK SYLLABUS
-    getSyllabus(){
+    getSyllabusandReading(){
+
+        string text = pdfReading();
+
+        textReader(text);
+
+
 
     }
     
@@ -21,7 +27,7 @@ public class Function {
     }
 
     //IMPORT READING
-    
+
 
 
 
