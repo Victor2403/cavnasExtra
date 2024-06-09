@@ -1,0 +1,28 @@
+<!-- This file will contain the HTML structure and form for uploading the syllabus file -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus Analyzer</title>
+    <!-- Include any CSS files or stylesheets here -->
+</head>
+<body>
+    <h1>Syllabus Analyzer</h1>
+    
+    <!-- Syllabus Upload Form -->
+    <form id="syllabusForm" enctype="multipart/form-data">
+        <input type="file" id="syllabusFile" accept=".txt, .pdf" required>
+        <button type="submit">Upload Syllabus</button>
+    </form>
+
+    <!-- Chatbot Interface -->
+    <div id="chatbotContainer">
+        <!-- Chatbot messages will be displayed here -->
+    </div>
+
+    <!-- Include script.js -->
+    <script src="script.js"></script>
+</body>
+</html>
