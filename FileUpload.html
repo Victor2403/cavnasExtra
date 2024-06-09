@@ -1,0 +1,27 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the form and input elements
+        const form = document.getElementById("syllabusForm");
+        const fileInput = document.getElementById("syllabusFile");
+
+        // Add event listener for form submission
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            const file = fileInput.files[0]; // Get the selected file
+            if (file) {
+                // File is selected, proceed with upload
+                uploadSyllabus(file);
+            } else {
+                alert("Please select a file to upload.");
+            }
+        });
+
+        // Function to handle syllabus file upload
+        function uploadSyllabus(file) {
+            // You can implement the file upload logic here
+            // For now, let's just log the file details
+            console.log("Uploaded file:", file.name, file.type, file.size);
+        }
+    });
+</script>

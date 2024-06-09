@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HomeworkManager",
+            "request": "launch",
+            "mainClass": "HomeworkManager",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "PlayAGame",
             "request": "launch",
             "mainClass": "PlayAGame",
