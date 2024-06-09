@@ -1,6 +1,3 @@
-// This file will contain the JavaScript code for handling the file upload, parsing the syllabus, and any other interactions.
-
-
 document.addEventListener("DOMContentLoaded", function() {
     // Get the form and input elements
     const form = document.getElementById("syllabusForm");
@@ -30,8 +27,10 @@ document.addEventListener("DOMContentLoaded", function() {
             // Call the parsing function based on file type
             if (file.type === 'text/plain') {
                 const assignments = parseTextSyllabus(syllabusContent);
-                console.log("Parsed assignments:", assignments);
-                // You can further process the parsed assignments here
+                // Generate recommendations based on parsed assignments
+                const recommendations = generateRecommendations(assignments);
+                // Display recommendations in the chatbot interface
+                displayRecommendations(recommendations);
             } else if (file.type === 'application/pdf') {
                 // Call PDF parsing function (not implemented here)
                 console.log("PDF parsing not implemented yet.");
@@ -42,6 +41,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Read the uploaded file as text
         reader.readAsText(file);
+    }
+
+    // Function to generate recommendations based on syllabus information
+    function generateRecommendations(assignments) {
+        const currentDate = new Date(); // Get the current date
+
+        // Filter assignments based on due date (e.g., upcoming assignments)
+        const upcomingAssignments = assignments.filter(assignment => {
+            return assignment.dueDate && assignment.dueDate > currentDate;
+        });
+
+        // Sort upcoming assignments by due date (ascending order)
+        upcomingAssignments.sort((a, b) => a.dueDate - b.dueDate);
+
+        // Generate recommendations based on upcoming assignments
+        let recommendations = [];
+        if (upcomingAssignments.length > 0) {
+            recommendations.push("Upcoming Assignments:");
+            upcomingAssignments.forEach(assignment => {
+                recommendations.push(`- ${assignment.name} (Due: ${assignment.dueDate.toDateString()})`);
+            });
+        } else {
+            recommendations.push("No upcoming assignments. Enjoy your free time!");
+        }
+
+        // You can add more recommendation logic here (e.g., study strategies)
+
+        return recommendations;
     }
 
     // Function to parse text syllabus
